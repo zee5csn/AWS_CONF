@@ -1,0 +1,8 @@
+goto the volume 
+
+click on the action and then click on the modify volume then increase volume size 20 to 30
+
+login ubuntu server 
+two methods for increase volume 1# resize2fs /dev/xvdf or 2# xfs_growfs /dev/xvdf
+# df -h
+# xfs_growfs /dev/xvdf        
