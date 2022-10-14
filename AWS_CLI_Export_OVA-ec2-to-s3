@@ -1,0 +1,10 @@
+aws ec2 create-instance-export-task --description "SumoERP-Live-Server" --instance-id i-0bb1e9c8caf9b66b7 --target-environment vmware --export-to-s3-task DiskImageFormat=vmdk,ContainerFormat=ova,S3Bucket=ova-import-usense,S3Prefix=SumoERP-Live-Server-25-6-19
+
+aws export get-status --export-i-057183c7a2362f544
+
+
+aws ec2 describe-export-tasks --export-task-ids export-i-0dcf0f97f31a70c02
+
+
+aws ec2 create-instance-export-task --description &quot;Lamp server&quot; --instance-id i-05747e2ae54cb9d8c --target-environment vmware --export- to-s3-task DiskImageFormat=vmdk,ContainerFormat=ova,S3Bucket=ova-file,S3Prefix=Lamp server
+
