@@ -1,0 +1,50 @@
+# goto EC2 instances select instance and edit Add tags 
+# Key: ABC
+# Value: XYZ
+
+# goto iam and create policy visual editor
+# choose a service
+# EC2, search and select startinstances, stopinstances, describeinstances
+# enter the policy name: EC2_start_stop
+# create Role select lambda search policy EC2_start_stop
+# enter Role name Ec2startstopschedulling
+
+# goto lambda create function auther and scratch
+# name:EC2_start_stop
+# runtime: python 3.6
+# Role: Choose an existing role don't select anything here
+# Existing Role:Ec2startstopschedulling
+# Create function
+# select EC2_start_stop and goto drop down paste the code
+
+
+import boto3
+ec2 = boto3.resource('ec2')
+def lambda_handler(event, context):
+	filter = [
+        {
+            'Name': 'tag:ABC',
+            'Values':['XYZ']
+
+        }
+        ]
+    instances = ec2.instances.filter(Filters=filter)
+    for instance in instances:
+        instance.start()
+    return 'Check your EC2 instance'
+
+# save and Test
+
+# goto cloudwatch events Create rule
+# Select Schedule
+# worldtimebuddy.com select place time in GMT or UTC
+# Select Cron expression 0 7 * * ? *
+# Add Target
+# lambda funtion
+# EC2_start_stop
+# configure details
+# rule name: anything
+
+# cron lambda trigger after wait 2 minuts
+#
+
